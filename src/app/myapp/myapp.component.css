@@ -1,0 +1,12 @@
+#custid,#custname,#location{
+    align-items: center;
+}
+
+#clr,#reg{
+    height: 25px;
+    width: 100px;
+}
+
+.alert{
+    color: red;
+}

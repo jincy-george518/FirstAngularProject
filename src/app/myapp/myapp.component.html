@@ -1,0 +1,49 @@
+<body style="text-align: center;">
+
+<form  #customerForm="ngForm" (ngSubmit)="register(customerForm.value)">
+    
+    <b>Customer ID</b> : <input type="text" id="custid"name="custid" required [(ngModel)] ="custid"  minlength="3" #cid="ngModel"  />
+    <br /><br />
+    <div *ngIf="cid.invalid && (cid.dirty || cid.touched)"class="alert">
+        <div *ngIf="cid.errors?.required">ID is required</div>
+        <div *ngIf="cid.errors?.minlength" > **ID must be at least 3 characters long.</div>
+    </div>
+    <br /><br />
+
+    <b>Customer Name</b> : <input type="text"id="custname"name="custname" required [(ngModel)]="custname" minlength="4" #cname = "ngModel"/>
+    <br /><br />
+    <div *ngIf="cname.invalid && (cname.dirty || cname.touched)"class="alert">
+        <div *ngIf="cname.errors?.required">Name is required</div>
+        <div *ngIf="cname.errors?.minlength" > Name must be at least 4 characters long.</div>
+    </div>
+    <br /><br />
+
+    <b>Location</b> : <input type="text"id="location"name="location" required [(ngModel)]="location"  minlength="5"  #cloc ="ngModel"/>
+    <br /><br />
+    <div *ngIf="cloc.invalid && (cloc.dirty ||cloc.touched)"class="alert">
+        <div *ngIf="cloc.errors?.required">Location is required</div>
+        <div *ngIf="cloc.errors?.minlength" > **Location must be at least 5 characters long.</div>
+    </div> 
+    <br /><br />
+
+    <input id="clr" type="button" value="Clear" (click)="clear()" />
+    <input id="reg" type="submit" [disabled]="customerForm.invalid" value="Register" />
+    
+</form>
+
+<br /><br />
+
+<table align="center" style="width: 50em;" border= '3'>
+    <tr>
+        <th>Customer ID</th>
+        <th> Name</th>
+        <th>Location</th>
+    </tr>
+    <tr *ngFor="let customer of customerlist" >
+        <td> {{ customer.custid }}</td>
+        <td>{{ customer.custname }}</td>
+        <td>{{ customer.location }}</td>
+    </tr>
+</table>
+    
+</body>
